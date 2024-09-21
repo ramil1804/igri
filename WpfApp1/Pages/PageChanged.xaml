@@ -1,0 +1,22 @@
+﻿<Page x:Class="WpfApp1.Pages.PageChanged"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Pages" xmlns:ui="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageChanged">
+
+    <Grid Background="#0E2039">
+        <StackPanel HorizontalAlignment="Left" Margin="47,10,0,10" Width="712" Orientation="Vertical">
+            <TextBlock Text="Выберите игру" Foreground="White" Width="195" Height="40" Margin="0,0,5,0" FontSize="28"/>
+            <StackPanel Height="282" Width="612" Orientation="Horizontal" Margin="0,35">
+                <ui:Button x:Name="ButtonRuletka" Background="#0E2039" Width="280" Click="ButtonRuletka_Click" Margin="160,0,25,0" HorizontalAlignment="Center">
+                    <Image Source="/PNG/2764321.png" Height="278" x:Name="RullerImage" Width="260" HorizontalAlignment="Center"/>
+                </ui:Button>
+                <Border CornerRadius="155" Height="220"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

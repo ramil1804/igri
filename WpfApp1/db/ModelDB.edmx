@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище TestDBWpfModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="collection">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="kaktus_id" Type="int" />
+          <Property Name="vistavka_id" Type="int" />
+        </EntityType>
+        <EntityType Name="kaktusi">
+          <Key>
+            <PropertyRef Name="id_kaktus" />
+          </Key>
+          <Property Name="id_kaktus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vid" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Proishojdenie" Type="nchar" MaxLength="10" />
+          <Property Name="Instrukciya" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="logins">
+          <Key>
+            <PropertyRef Name="id_login" />
+          </Key>
+          <Property Name="id_login" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nchar" MaxLength="10" />
+          <Property Name="passwod" Type="nchar" MaxLength="10" />
+          <Property Name="user_id" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Vistavki">
+          <Key>
+            <PropertyRef Name="id_vistavka" />
+          </Key>
+          <Property Name="id_vistavka" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="date" />
+          <Property Name="location" Type="nchar" MaxLength="10" />
+          <Property Name="awards" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_collection_kaktusi">
+          <End Role="kaktusi" Type="Self.kaktusi" Multiplicity="0..1" />
+          <End Role="collection" Type="Self.collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kaktusi">
+              <PropertyRef Name="id_kaktus" />
+            </Principal>
+            <Dependent Role="collection">
+              <PropertyRef Name="kaktus_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_collection_Vistavki">
+          <End Role="Vistavki" Type="Self.Vistavki" Multiplicity="0..1" />
+          <End Role="collection" Type="Self.collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vistavki">
+              <PropertyRef Name="id_vistavka" />
+            </Principal>
+            <Dependent Role="collection">
+              <PropertyRef Name="vistavka_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_logins_users">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="logins" Type="Self.logins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="logins">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище TestDBWpfModelContainer">
+          <EntitySet Name="collection" EntityType="Self.collection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kaktusi" EntityType="Self.kaktusi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="logins" EntityType="Self.logins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vistavki" EntityType="Self.Vistavki" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_collection_kaktusi" Association="Self.FK_collection_kaktusi">
+            <End Role="kaktusi" EntitySet="kaktusi" />
+            <End Role="collection" EntitySet="collection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_collection_Vistavki" Association="Self.FK_collection_Vistavki">
+            <End Role="Vistavki" EntitySet="Vistavki" />
+            <End Role="collection" EntitySet="collection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_logins_users" Association="Self.FK_logins_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="logins" EntitySet="logins" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestDBWpfModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TestDBWpfEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="collection" EntityType="TestDBWpfModel.collection" />
+          <EntitySet Name="kaktusi" EntityType="TestDBWpfModel.kaktusi" />
+          <EntitySet Name="logins" EntityType="TestDBWpfModel.logins" />
+          <EntitySet Name="sysdiagrams" EntityType="TestDBWpfModel.sysdiagrams" />
+          <EntitySet Name="users" EntityType="TestDBWpfModel.users" />
+          <EntitySet Name="Vistavki" EntityType="TestDBWpfModel.Vistavki" />
+          <AssociationSet Name="FK_collection_kaktusi" Association="TestDBWpfModel.FK_collection_kaktusi">
+            <End Role="kaktusi" EntitySet="kaktusi" />
+            <End Role="collection" EntitySet="collection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_collection_Vistavki" Association="TestDBWpfModel.FK_collection_Vistavki">
+            <End Role="Vistavki" EntitySet="Vistavki" />
+            <End Role="collection" EntitySet="collection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_logins_users" Association="TestDBWpfModel.FK_logins_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="logins" EntitySet="logins" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="collection">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="kaktus_id" Type="Int32" />
+          <Property Name="vistavka_id" Type="Int32" />
+          <NavigationProperty Name="kaktusi" Relationship="TestDBWpfModel.FK_collection_kaktusi" FromRole="collection" ToRole="kaktusi" />
+          <NavigationProperty Name="Vistavki" Relationship="TestDBWpfModel.FK_collection_Vistavki" FromRole="collection" ToRole="Vistavki" />
+        </EntityType>
+        <EntityType Name="kaktusi">
+          <Key>
+            <PropertyRef Name="id_kaktus" />
+          </Key>
+          <Property Name="id_kaktus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Proishojdenie" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Instrukciya" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="collection" Relationship="TestDBWpfModel.FK_collection_kaktusi" FromRole="kaktusi" ToRole="collection" />
+        </EntityType>
+        <EntityType Name="logins">
+          <Key>
+            <PropertyRef Name="id_login" />
+          </Key>
+          <Property Name="id_login" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="passwod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <NavigationProperty Name="users" Relationship="TestDBWpfModel.FK_logins_users" FromRole="logins" ToRole="users" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="logins" Relationship="TestDBWpfModel.FK_logins_users" FromRole="users" ToRole="logins" />
+        </EntityType>
+        <EntityType Name="Vistavki">
+          <Key>
+            <PropertyRef Name="id_vistavka" />
+          </Key>
+          <Property Name="id_vistavka" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="location" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="awards" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="collection" Relationship="TestDBWpfModel.FK_collection_Vistavki" FromRole="Vistavki" ToRole="collection" />
+        </EntityType>
+        <Association Name="FK_collection_kaktusi">
+          <End Type="TestDBWpfModel.kaktusi" Role="kaktusi" Multiplicity="0..1" />
+          <End Type="TestDBWpfModel.collection" Role="collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kaktusi">
+              <PropertyRef Name="id_kaktus" />
+            </Principal>
+            <Dependent Role="collection">
+              <PropertyRef Name="kaktus_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_collection_Vistavki">
+          <End Type="TestDBWpfModel.Vistavki" Role="Vistavki" Multiplicity="0..1" />
+          <End Type="TestDBWpfModel.collection" Role="collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vistavki">
+              <PropertyRef Name="id_vistavka" />
+            </Principal>
+            <Dependent Role="collection">
+              <PropertyRef Name="vistavka_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_logins_users">
+          <End Type="TestDBWpfModel.users" Role="users" Multiplicity="0..1" />
+          <End Type="TestDBWpfModel.logins" Role="logins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="logins">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TestDBWpfModelContainer" CdmEntityContainer="TestDBWpfEntities">
+          <EntitySetMapping Name="collection">
+            <EntityTypeMapping TypeName="TestDBWpfModel.collection">
+              <MappingFragment StoreEntitySet="collection">
+                <ScalarProperty Name="vistavka_id" ColumnName="vistavka_id" />
+                <ScalarProperty Name="kaktus_id" ColumnName="kaktus_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kaktusi">
+            <EntityTypeMapping TypeName="TestDBWpfModel.kaktusi">
+              <MappingFragment StoreEntitySet="kaktusi">
+                <ScalarProperty Name="Instrukciya" ColumnName="Instrukciya" />
+                <ScalarProperty Name="Proishojdenie" ColumnName="Proishojdenie" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Vid" ColumnName="Vid" />
+                <ScalarProperty Name="id_kaktus" ColumnName="id_kaktus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logins">
+            <EntityTypeMapping TypeName="TestDBWpfModel.logins">
+              <MappingFragment StoreEntitySet="logins">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="passwod" ColumnName="passwod" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="id_login" ColumnName="id_login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TestDBWpfModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="TestDBWpfModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vistavki">
+            <EntityTypeMapping TypeName="TestDBWpfModel.Vistavki">
+              <MappingFragment StoreEntitySet="Vistavki">
+                <ScalarProperty Name="awards" ColumnName="awards" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="id_vistavka" ColumnName="id_vistavka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

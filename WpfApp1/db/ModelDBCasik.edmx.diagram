@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="920c9c6d50824f378d7e2bfdcb0c0d5a" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="TestDBWpfModel1.Bets" Width="1.5" PointX="6" PointY="5.5" />
+        <EntityTypeShape EntityType="TestDBWpfModel1.Bonuses" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="TestDBWpfModel1.collection" Width="1.5" PointX="8" PointY="2.375" />
+        <EntityTypeShape EntityType="TestDBWpfModel1.Employees" Width="1.5" PointX="8.75" PointY="6" />
+        <EntityTypeShape EntityType="TestDBWpfModel1.Games" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TestDBWpfModel1.kaktusi" Width="1.5" PointX="5.75" PointY="2.25" />
+        <EntityTypeShape EntityType="TestDBWpfModel1.logins" Width="1.5" PointX="10" PointY="9.25" />
+        <EntityTypeShape EntityType="TestDBWpfModel1.Players" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="TestDBWpfModel1.sysdiagrams" Width="1.5" PointX="10.75" PointY="2" />
+        <EntityTypeShape EntityType="TestDBWpfModel1.Transactions" Width="1.5" PointX="3" PointY="10.625" />
+        <EntityTypeShape EntityType="TestDBWpfModel1.users" Width="1.5" PointX="7.75" PointY="9.25" />
+        <EntityTypeShape EntityType="TestDBWpfModel1.Vistavki" Width="1.5" PointX="5.75" PointY="9.375" />
+        <AssociationConnector Association="TestDBWpfModel1.FK__Bets__game_id__03F0984C" />
+        <AssociationConnector Association="TestDBWpfModel1.FK__Bets__player_id__04E4BC85" />
+        <AssociationConnector Association="TestDBWpfModel1.FK__Bonuses__player___05D8E0BE" />
+        <AssociationConnector Association="TestDBWpfModel1.FK_collection_kaktusi" />
+        <AssociationConnector Association="TestDBWpfModel1.FK_collection_Vistavki" />
+        <AssociationConnector Association="TestDBWpfModel1.FK_logins_users" />
+        <AssociationConnector Association="TestDBWpfModel1.FK__Transacti__playe__09A971A2" />
+        <EntityTypeShape EntityType="TestDBWpfModel1.Card" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TestDBWpfModel1.HistoryMatches" Width="1.5" PointX="11.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
